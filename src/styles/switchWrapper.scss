@@ -3,8 +3,17 @@
 
   > :first-child ~ * {
     position: absolute;
-    top: 0;
     left: 0;
     width: 100%;
+    animation: entrance 1s;
+  }
+
+  @keyframes entrance {
+    0% {
+      top: 200px;
+    }
+    100% {
+      top: 0;
+    }
   }
 }

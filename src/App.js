@@ -19,7 +19,7 @@ import parseTrips from './utils/parseTrips';
 
 import { setMultipleStates } from './redux/globalRedux';
 
-import switchWrapper from './styles/switchWrapper.scss';
+import styles from './styles/switchWrapper.scss';
 
 class App extends React.Component {
   static propTypes = {
@@ -45,10 +45,10 @@ class App extends React.Component {
       <BrowserRouter>
         <MainLayout>
           <AnimatedSwitch
-            atEnter={{ opacity: 0 }}
+            atEnter={{ opacity: 1 }}
             atLeave={{ opacity: 0 }}
             atActive={{ opacity: 1 }}
-            className={switchWrapper.switchWrapper}
+            className={styles.switchWrapper}
           >
             <Route exact path="/" component={Home} />
             <Route exact path="/trips" component={Trips} />
