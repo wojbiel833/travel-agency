@@ -21,10 +21,12 @@ export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 // TODO - add other action creators
 export const changeDuration = payload => ({ payload, type: CHANGE_DURATION });
 
-export const chengeCheckbox = payload => ({ payload, type: CHANGE_CHECKBOX });
+export const changeCheckbox = payload => ({ payload, type: CHANGE_CHECKBOX });
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
+  console.log(statePart);
+  console.log(action);
   switch (action.type) {
     case CHANGE_PHRASE:
       return {
@@ -54,8 +56,7 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_CHECKBOX:
       return {
         ...statePart,
-        check: action.payload,
-        uncheck: action.payload,
+        checkbox: [action.payload],
       };
     default:
       return statePart;

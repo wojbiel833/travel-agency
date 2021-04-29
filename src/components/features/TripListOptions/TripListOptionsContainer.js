@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeSearchPhrase: phrase => dispatch(changeSearchPhrase(phrase)),
   changeDuration: duration => dispatch(changeDuration(duration)),
-  changeCheckbox: check => dispatch(changeCheckbox(check)),
+  changeCheckbox: checkbox => dispatch(changeCheckbox(checkbox)),
   // TODO - add more dispatchers for other filters
 });
 
