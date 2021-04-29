@@ -33,7 +33,7 @@ export default function reducer(statePart = [], action = {}) {
       };
     // TODO - handle other action types
     case CHANGE_DURATION:
-      if (action.payload.type) {
+      if (action.payload.type === 'from') {
         return {
           ...statePart,
           duration: {
