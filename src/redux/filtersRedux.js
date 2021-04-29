@@ -33,11 +33,24 @@ export default function reducer(statePart = [], action = {}) {
       };
     // TODO - handle other action types
     case CHANGE_DURATION:
-      return {
-        ...statePart,
-        durationFrom: action.payload,
-        durationTo: action.payload,
-      };
+      if (action.payload.type) {
+        return {
+          ...statePart,
+          duration: {
+            ...statePart.duration,
+            from: action.payload.value,
+          },
+        };
+      } else {
+        return {
+          ...statePart,
+          duration: {
+            ...statePart.duration,
+            to: action.payload.value,
+          },
+        };
+      }
+
     case CHANGE_CHECKBOX:
       return {
         ...statePart,
