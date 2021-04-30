@@ -11,7 +11,7 @@ import DetailsBox from '../../common/DetailsBox/DetailsBox';
 import DetailsImage from '../../common/DetailsImage/DetailsImage';
 import List from '../../common/List/List';
 import ListItem from '../../common/ListItem/ListItem';
-import OrderForm from './../../features/OrderForm/OrderForm';
+import OrderFormContainer from './../../features/OrderForm/OrderFormContainer';
 
 import styles from './Trip.scss';
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -25,6 +25,7 @@ const Trip = ({
   description,
   country,
   intro,
+  options,
 }) => {
   if (error) return <NotFound />;
   else
@@ -72,7 +73,7 @@ const Trip = ({
               <DetailsImage>
                 <SideImage source={country.flag} />
               </DetailsImage>
-              <OrderForm />
+              <OrderFormContainer opts={options} tCost={cost} />
               <Grid>
                 <Row>
                   <Col md={12} lg={4}>
