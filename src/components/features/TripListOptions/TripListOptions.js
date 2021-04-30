@@ -7,16 +7,19 @@ import { Row, Col } from 'react-flexbox-grid';
 class TripListOptions extends React.Component {
   handleTags(tag, checked) {
     const { filters } = this.props;
+    const tagsCopy = [...filters.tags];
+
     if (checked) {
       console.log(filters.tags);
       console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
-      this.props.changeCheckbox(filters.tags.push(tag));
+      tagsCopy.push(tag);
+      this.props.changeCheckbox(tagsCopy);
     } else {
       console.log('Removing tag', tag);
       // TODO - use action dispatcher from props
-      this.props.changeCheckbox(filters.tags.splice(tag, 1));
-      console.log(filters.tags);
+      tagsCopy.splice(tagsCopy.indexOf(tag), 1);
+      this.props.changeCheckbox(tagsCopy);
     }
   }
 

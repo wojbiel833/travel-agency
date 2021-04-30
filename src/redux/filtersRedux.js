@@ -56,7 +56,7 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_CHECKBOX:
       return {
         ...statePart,
-        checkbox: [action.payload],
+        checkbox: [...action.payload],
       };
     default:
       return statePart;
