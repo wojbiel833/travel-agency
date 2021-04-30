@@ -10,13 +10,14 @@ class TripListOptions extends React.Component {
     const tagsCopy = [...filters.tags];
 
     if (checked) {
-      console.log(filters.tags);
+      console.log(tagsCopy);
       console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
       tagsCopy.push(tag);
       this.props.changeCheckbox(tagsCopy);
     } else {
       console.log('Removing tag', tag);
+      console.log(tagsCopy);
       // TODO - use action dispatcher from props
       tagsCopy.splice(tagsCopy.indexOf(tag), 1);
       this.props.changeCheckbox(tagsCopy);

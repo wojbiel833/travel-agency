@@ -25,8 +25,8 @@ export const changeCheckbox = payload => ({ payload, type: CHANGE_CHECKBOX });
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
-  console.log(statePart);
-  console.log(action);
+  // console.log(statePart);
+  // console.log(action);
   switch (action.type) {
     case CHANGE_PHRASE:
       return {
@@ -56,7 +56,7 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_CHECKBOX:
       return {
         ...statePart,
-        checkbox: [...action.payload],
+        tags: [...action.payload],
       };
     default:
       return statePart;

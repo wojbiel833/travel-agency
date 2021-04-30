@@ -3,7 +3,7 @@
 export const getAllTrips = ({ trips }) => trips;
 export const getAllTags = ({ tags }) => tags;
 
-export const getFilteredTrips = ({ trips, filters, tags }) => {
+export const getFilteredTrips = ({ trips, filters }) => {
   let output = trips;
 
   // filter by search phrase
@@ -21,9 +21,21 @@ export const getFilteredTrips = ({ trips, filters, tags }) => {
   }
   // TODO - filter by tags
   if (filters.tags) {
-    console.log(filters);
-    console.log(tags);
-    // output = output.filter(tag => filters.tags.includes(tag));
+    output = output.filter(trip => {
+      let isOkay = true;
+
+      for (let tag of filters.tags) {
+        if (filters.tags.includes(tag)) {
+          const tripTags = { ...trip.tags };
+
+          if (!Object.values(tripTags).includes(tag)) {
+            isOkay = false;
+          }
+        }
+      }
+
+      return isOkay;
+    });
   }
   // TODO - sort by cost descending (most expensive goes first)
 
