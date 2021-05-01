@@ -14,7 +14,7 @@ const OrderSummary = (props, options) => {
        Wykorzystamy do tego funkcje z katalogu utils – formatPrice oraz calculateTotal. Druga z nich otrzyma jako argument wynik wywołania tej pierwszej.
 
       Czyli według opisu powinno być tak...?
-      calculateTotal(formatPrice(props.tripCost, options)
+      calculateTotal(formatPrice(props.tripCost), options)
 
       A potem piszą:
       Następnie, w kodzie JSX, wywołaj funkcję formatPrice. Jako jej argument podaj wywołanie funkcji calculateTotal, która ma otrzymać dwa argumenty – koszt wycieczki i opcje ze stanu aplikacji.

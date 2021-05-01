@@ -37,3 +37,9 @@ export const calculateTotal = (tripCost, options) => {
   }
   return total * multiplier;
 };
+
+// Funkcja calculateTotal iteruje przez wszystkie opcje zapisane w stanie aplikacji, dla każdej nich sprawdzając jej ustawienia w pricing.json. Następnie rozpatrywanych jest kilka warunków w bloku if...else if:
+
+// jeśli wartość opcji w stanie aplikacji jest tablicą, a w pricing.json jest tablica values dla tej opcji, to bierzemy pod uwagę cenę każdego z zaznaczonych wariantów – ta sytuacja będzie dotyczyła opcji typu checkboxes,
+// jeśli wartość opcji w stanie aplikacji nie jest tablicą, ale w pricing.json jest tablica values dla tej opcji, to znajdujemy ten element z values, który ma id zapisane jako wartość tej opcji w stanie aplikacji (czyli robimy to samo, co powyżej, tyle że bez pętli, bo jest tylko jeden możliwy wybór), i wtedy bierzemy pod uwagę cenę tego wariantu opcji,
+// wreszcie, jeśli mamy do czynienia z opcją typu number, to mnożymy jej wartość przez cenę zawartą w pricing.json dla tej opcji.
