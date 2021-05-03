@@ -27,7 +27,7 @@ const OrderForm = ({ cost, options }) => {
 
 OrderForm.propTypes = {
   cost: PropTypes.string,
-  options: PropTypes.object,
+  options: PropTypes.object || PropTypes.array,
 };
 
 export default OrderForm;
