@@ -68,15 +68,12 @@ const Trip = ({
             </Grid>
             <Grid>
               <PageTitle text={`About ${country.name}`} />
+              <OrderFormContainer cost={cost} />
             </Grid>
             <DetailsBox>
               <DetailsImage>
                 <SideImage source={country.flag} />
               </DetailsImage>
-              <Grid>
-                <PageTitle text={`About ${country.name}`} />
-                <OrderFormContainer cost={cost} />
-              </Grid>
               <Grid>
                 <Row>
                   <Col md={12} lg={4}>
