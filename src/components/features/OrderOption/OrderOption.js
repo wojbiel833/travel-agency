@@ -1,19 +1,32 @@
 import React from 'react';
-import { Col } from 'react-flexbox-grid';
+// import { Col } from 'react-flexbox-grid';
 
 import styles from './OrderOption.scss';
-import pricing from './../../../data/pricing.json';
+// import pricing from './../../../data/pricing.json';
+import OrderOptionDropdown from './OrderOptionDripdown';
+import OrderOptionIcons from './OrderOptionIcons';
+import OrderOptionNumber from './OrderOptionNumber';
+import OrderOptionCheckboxes from './OrderOptionCheckboxes';
 
-const OrederOption = () => {
-  return (
-    <div className={styles.component}>
-      {pricing.map(price => (
-        <Col md={4} key={price.id}>
-          <h3 className={styles.title}>{price.name}</h3>
-        </Col>
-      ))}
-    </div>
-  );
+const optionTypes = {
+  dropdown: OrderOptionDropdown,
+  icons: OrderOptionIcons,
+  checkboxes: OrderOptionCheckboxes,
+  number: OrderOptionNumber,
 };
 
-export default OrederOption;
+const OrderOption = ({ name, type, ...otherProps }) => {
+  const OptionComponent = optionTypes[type];
+  if (!OptionComponent) {
+    return null;
+  } else {
+    return (
+      <div className={styles.component}>
+        <h3 className={styles.title}>{name}</h3>
+        <OptionComponent {...otherProps} />
+      </div>
+    );
+  }
+};
+
+export default OrderOption;
