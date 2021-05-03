@@ -25,7 +25,7 @@ const Trip = ({
   description,
   country,
   intro,
-  options,
+  // options,
 }) => {
   if (error) return <NotFound />;
   else
@@ -73,7 +73,10 @@ const Trip = ({
               <DetailsImage>
                 <SideImage source={country.flag} />
               </DetailsImage>
-              <OrderFormContainer opts={options} tCost={cost} />
+              <Grid>
+                <PageTitle text={`About ${country.name}`} />
+                <OrderFormContainer cost={cost} />
+              </Grid>
               <Grid>
                 <Row>
                   <Col md={12} lg={4}>
