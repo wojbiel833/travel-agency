@@ -7,10 +7,9 @@ import Icon from './../../common/Icon/Icon';
 import { formatPrice } from './../../../utils/formatPrice';
 
 const OrderOptionIcons = ({ values, setOptionValue, required }) => {
-  console.log(required);
   if (!required) {
     return (
-      <div className={styles.icons}>
+      <div className={styles.icon}>
         {values.map(() => (
           <div
             key={Math.trunc(Math.random() * 1000)}
@@ -36,8 +35,8 @@ const OrderOptionIcons = ({ values, setOptionValue, required }) => {
             }
           >
             <Icon name={value.icon} />
-            {ReactHtmlParser(value.name)}
-            {ReactHtmlParser(formatPrice(value.price))}
+            <span>{ReactHtmlParser(value.name)}</span>
+            <span>{ReactHtmlParser(formatPrice(value.price))}</span>
           </div>
         ))}
       </div>

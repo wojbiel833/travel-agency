@@ -13,16 +13,15 @@ import OrderOption from '../OrderOption/OrderOption';
 import { setOrderOption } from '../../../redux/orderRedux';
 
 const OrderForm = ({ cost, options }) => {
-  console.log(pricing);
   return (
     <Grid>
       <Row>
         <Col xs={12}>
           <PageTitle text="Trip options" />
           {pricing.map(option => (
-            <Col md={4} key={option.id}>
+            <Col md={4} sm={2} smOffset={1} key={option.id}>
               <OrderOption
-                currentValue={option.name || ''}
+                name={option.name || ''}
                 type={option.type}
                 {...option}
                 setOrderOption={setOrderOption}
