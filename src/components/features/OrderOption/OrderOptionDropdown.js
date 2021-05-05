@@ -23,7 +23,6 @@ const OrderOptionDropdown = ({
       </option>
     )}
     {values.map(value => (
-      // console.log(value)
       <option key={value.id} value={value.id}>
         {value.name} ({formatPrice(value.price)})
       </option>
