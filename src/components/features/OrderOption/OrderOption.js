@@ -3,7 +3,7 @@ import React from 'react';
 
 import styles from './OrderOption.scss';
 // import pricing from './../../../data/pricing.json';
-import OrderOptionDropdown from './OrderOptionDripdown';
+import OrderOptionDropdown from './OrderOptionDropdown';
 import OrderOptionIcons from './OrderOptionIcons';
 import OrderOptionNumber from './OrderOptionNumber';
 import OrderOptionCheckboxes from './OrderOptionCheckboxes';
@@ -15,15 +15,24 @@ const optionTypes = {
   number: OrderOptionNumber,
 };
 
-const OrderOption = ({ name, type, ...otherProps }) => {
+const OrderOption = ({
+  currentValue,
+  type,
+  id,
+  setOrderOption,
+  ...otherProps
+}) => {
   const OptionComponent = optionTypes[type];
   if (!OptionComponent) {
     return null;
   } else {
     return (
       <div className={styles.component}>
-        <h3 className={styles.title}>{name}</h3>
-        <OptionComponent {...otherProps} />
+        <h3 className={styles.title}>{currentValue}</h3>
+        <OptionComponent
+          setOptionValue={value => setOrderOption({ [id]: value })}
+          {...otherProps}
+        />
       </div>
     );
   }
