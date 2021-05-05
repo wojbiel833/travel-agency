@@ -6,27 +6,51 @@ import styles from './OrderOption.scss';
 import Icon from './../../common/Icon/Icon';
 import { formatPrice } from './../../../utils/formatPrice';
 
-const OrderOptionIcons = ({ values, setOptionValue }) => (
-  <div className={styles.icons}>
-    {values.map(value => (
-      <div
-        key={value.id}
-        onClick={event => setOptionValue(event.currentTarget.id)}
-        className={styles.iconActive}
-      >
-        <Icon name={value.icon} />
-        {ReactHtmlParser(value.name)}
-        {ReactHtmlParser(formatPrice(value.price))}
+const OrderOptionIcons = ({ values, setOptionValue, required }) => {
+  console.log(required);
+  if (!required) {
+    return (
+      <div className={styles.icons}>
+        {values.map(() => (
+          <div
+            key={Math.trunc(Math.random() * 1000)}
+            onClick={() => setOptionValue('')}
+            className={styles.icon}
+          >
+            <Icon name={'times-circle'} />
+            NONE
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-);
+    );
+  } else {
+    return (
+      <div className={styles.icons}>
+        {values.map(value => (
+          <div
+            key={value.id}
+            onClick={event => setOptionValue(event.currentTarget.id)}
+            className={
+              styles.icon +
+              (value.id === value.currentValue ? ' ' + styles.iconActive : '')
+            }
+          >
+            <Icon name={value.icon} />
+            {ReactHtmlParser(value.name)}
+            {ReactHtmlParser(formatPrice(value.price))}
+          </div>
+        ))}
+      </div>
+    );
+  }
+};
 
 OrderOptionIcons.propTypes = {
   values: PropTypes.array,
   id: PropTypes.string,
   options: PropTypes.array || PropTypes.object,
   setOptionValue: PropTypes.func,
+  required: PropTypes.bool,
 };
 
 export default OrderOptionIcons;
