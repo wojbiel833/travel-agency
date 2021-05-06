@@ -7,7 +7,4 @@ describe('Component Hero', () => {
     const component = shallow(<Hero titleText="Lorem ipsum" />);
     expect(component).toBeTruthy();
   });
-  it('should throw error withhout required props', () => {
-    expect(() => shallow(<Hero />)).toThrow();
-  });
 });
