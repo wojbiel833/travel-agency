@@ -15,7 +15,7 @@ const optionTypes = {
   number: OrderOptionNumber,
 };
 
-const OrderOption = ({ name, type, id, setOrderOption, ...otherProps }) => {
+const OrderOption = ({ type, id, name, setOrderOption, ...otherProps }) => {
   const OptionComponent = optionTypes[type];
   if (!OptionComponent) {
     return null;

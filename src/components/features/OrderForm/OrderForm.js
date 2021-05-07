@@ -10,9 +10,8 @@ import PageTitle from './../../common/PageTitle/PageTitle';
 import OrderSummary from './../OrderSummary/OrderSummary';
 import pricing from './../../../data/pricing.json';
 import OrderOption from '../OrderOption/OrderOption';
-import { setOrderOption } from '../../../redux/orderRedux';
 
-const OrderForm = ({ cost, options }) => {
+const OrderForm = ({ cost, options, setOrderOption }) => {
   return (
     <Grid>
       <Row>
@@ -38,6 +37,7 @@ const OrderForm = ({ cost, options }) => {
 OrderForm.propTypes = {
   cost: PropTypes.string,
   options: PropTypes.object || PropTypes.array,
+  setOrderOption: PropTypes.func,
 };
 
 export default OrderForm;
