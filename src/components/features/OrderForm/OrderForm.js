@@ -17,16 +17,19 @@ const OrderForm = ({ cost, options, setOrderOption }) => {
       <Row>
         <Col xs={12}>
           <PageTitle text="Trip options" />
-          {pricing.map(option => (
-            <Col md={4} sm={2} smOffset={1} key={option.id}>
-              <OrderOption
-                name={option.name || ''}
-                type={option.type}
-                {...option}
-                setOrderOption={setOrderOption}
-              ></OrderOption>
-            </Col>
-          ))}
+          <Row>
+            {pricing.map(option => (
+              <Col sm={6} md={4} lg={3} key={option.id}>
+                <OrderOption
+                  name={option.name || ''}
+                  type={option.type}
+                  {...option}
+                  setOrderOption={setOrderOption}
+                  currentValue={options[option.id]}
+                ></OrderOption>
+              </Col>
+            ))}
+          </Row>
           <OrderSummary options={options} tripCost={cost}></OrderSummary>
         </Col>
       </Row>
