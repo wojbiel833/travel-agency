@@ -28,11 +28,11 @@ describe('Component TripSummary', () => {
     expect(() =>
       shallow(
         <TripSummary
-          id="Lorem ipsum"
-          image="Lorem ipsum"
-          name="Lorem ipsum"
-          cost="Lorem ipsum"
-          days={1}
+        // id="Lorem ipsum"
+        // image="Lorem ipsum"
+        // name="Lorem ipsum"
+        // cost="Lorem ipsum"
+        // days={1}
         />
       )
     ).toThrow();
