@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Hero = ({ variant = '', titleText, imageSrc, ...otherProps }) => (
   <div
-    titleText={titleText}
+    // titleText={titleText}
     {...otherProps}
     className={
       styles.component +
