@@ -8,9 +8,7 @@ describe('Component Hero', () => {
     expect(component).toBeTruthy();
     console.log(component.debug());
   });
-  // it('should throw error without required props', () => {
-  //   expect(() => shallow(<Hero />)).toThrow();
-  // });
+
   it('should render correct title and image', () => {
     const expectedTitle = 'Lorem ipsum';
     const expectedImage = 'image.jpg';
@@ -20,7 +18,7 @@ describe('Component Hero', () => {
 
     const renderedTitle = component.find('.title').text();
     expect(renderedTitle).toEqual(expectedTitle);
-    // expect(component.find('.image').prop('src')).toEqual(expectedImage);
+    expect(component.find('.image').prop('src')).toEqual(expectedImage);
   });
   it('renders correct classNames', () => {
     const mockVariants = 'small dummy';

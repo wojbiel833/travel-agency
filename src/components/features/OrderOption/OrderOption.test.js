@@ -6,12 +6,7 @@ import OrderOption from './OrderOption';
 describe('Component OrderOption', () => {
   it('should render without crashing', () => {
     const component = shallow(
-      <OrderOption
-        type="type"
-        name="name"
-        id="id"
-        setOrderOption="setOrderOption"
-      />
+      <OrderOption type="type" name="name" id="id" setOrderOption={() => {}} />
     );
     expect(component).toBeTruthy();
     console.log(component.debug());
@@ -20,13 +15,10 @@ describe('Component OrderOption', () => {
     const component = shallow(<OrderOption />);
     expect(component).toEqual({});
   });
-  it('should render correct title', () => {
+  it('should render correct name', () => {
     const expectedName = 'Lorem ipsum';
-    const component = shallow(<OrderOption name={expectedName} />);
+    const component = shallow(<OrderOption type="text" name={expectedName} />);
 
-    const renderedName = component.find('.title').render();
-    expect(component.find('.title').render().prop('name')).toEqual(
-      renderedName
-    );
+    expect(component.find('.title').text()).toEqual(expectedName);
   });
 });

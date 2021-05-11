@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './TripSummary.scss';
 import { Col } from 'react-flexbox-grid';
 
-const TripSummary = ({
-  id,
-  image,
-  name,
-  cost,
-  days,
-  // , tags
-}) => {
-  const [tags] = useState(['test1', 'test2', 'test3']);
+const TripSummary = ({ id, image, name, cost, days, tags }) => {
   return (
     <Col xs={12} sm={6} lg={4} className={styles.column}>
       <Link to={`/trip/${id}`} className={styles.link}>

@@ -7,36 +7,37 @@ describe('Component TripSummary', () => {
   it('should render correct id', () => {
     const id = 'abc';
     const expectedId = `/trip/${id}`;
-    const component = shallow(<TripSummary to={expectedId} />);
+    const component = shallow(
+      <TripSummary
+        id={id}
+        tags={[]}
+        image="Lorem ipsum"
+        name="Lorem ipsum"
+        cost="Lorem ipsum"
+        days={1}
+      />
+    );
 
-    // const renderedId = component.find('.link').text();
-    // expect(renderedId).toEqual(expectedId);
     expect(component.find('.link').prop('to')).toEqual(expectedId);
   });
   it('should render correct src and alt in <img>', () => {
     const expectedAlt = 'Lorem ipsum';
     const expectedSrc = 'image.jpg';
     const component = shallow(
-      <TripSummary src={expectedSrc} alt={expectedAlt} />
+      <TripSummary
+        image={expectedSrc}
+        name={expectedAlt}
+        id="12"
+        cost="Lorem ipsum"
+        days={1}
+        tags={[]}
+      />
     );
 
-    const renderedImg = component.find('img').text();
-    expect(renderedImg).toEqual(expectedAlt);
-    expect(component.find('.image').prop('src')).toEqual(expectedSrc);
+    expect(component.find('img').prop('alt')).toEqual(expectedAlt);
+    expect(component.find('img').prop('src')).toEqual(expectedSrc);
   });
-  it('should throw error without required props', () => {
-    expect(() =>
-      shallow(
-        <TripSummary
-        // id="Lorem ipsum"
-        // image="Lorem ipsum"
-        // name="Lorem ipsum"
-        // cost="Lorem ipsum"
-        // days={1}
-        />
-      )
-    ).toThrow();
-  });
+
   it('should render without crashing', () => {
     const component = shallow(
       <TripSummary
@@ -45,6 +46,7 @@ describe('Component TripSummary', () => {
         name="Lorem ipsum"
         cost="Lorem ipsum"
         days={1}
+        tags={[]}
       />
     );
     expect(component).toBeTruthy();
@@ -53,10 +55,19 @@ describe('Component TripSummary', () => {
 
   it('should render correct tags array', () => {
     const expectedArray = ['test1', 'test2', 'test3'];
-    const component = shallow(<TripSummary tags={expectedArray} />);
+    const component = shallow(
+      <TripSummary
+        tags={expectedArray}
+        id="12"
+        image="Lorem ipsum"
+        name="Lorem ipsum"
+        cost="Lorem ipsum"
+        days={1}
+      />
+    );
 
-    const renderedArray = component.find('.tags').text();
-    expect(renderedArray).toEqual(expectedArray);
-    // expect(component.find('.tags').prop('tags')).toEqual(expectedArray);
+    expect(component.find('.tags span').at(0).text()).toEqual(expectedArray[0]);
+    expect(component.find('.tags span').at(1).text()).toEqual(expectedArray[1]);
+    expect(component.find('.tags span').at(2).text()).toEqual(expectedArray[2]);
   });
 });
