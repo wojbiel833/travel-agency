@@ -86,7 +86,7 @@ for (let type in optionTypes) {
     it(`renders ${optionTypes[type]}`, () => {
       expect(subcomponent).toBeTruthy();
       expect(subcomponent.length).toBe(1);
-      console.log(component.debug());
+      // console.log(component.debug());
       console.log(subcomponent.debug());
     });
 
@@ -109,6 +109,77 @@ for (let type in optionTypes) {
         it('should run setOrderOption function on change', () => {
           renderedSubcomponent
             .find('select')
+            .simulate('change', { currentTarget: { value: testValue } });
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({
+            [mockProps.id]: testValue,
+          });
+        });
+        break;
+      }
+      case 'icons': {
+        it('contains div and Icon', () => {
+          const div = renderedSubcomponent.find('div');
+          expect(div.length).toBe(4); //4 divy
+
+          const noOption = div.find('Icon[name="times-circle"]').length;
+          expect(noOption).toBe(1);
+
+          const optionIcons = div.find('div Icon').not('[name="times-circle"]');
+          expect(optionIcons.length).toBe(mockProps.values.length);
+          expect(optionIcons.at(0).prop('name')).toBe(mockProps.values[0].icon);
+          expect(optionIcons.at(1).prop('name')).toBe(mockProps.values[1].icon);
+        });
+        it('should run setOrderOption function on click', () => {
+          renderedSubcomponent.find('div div:last-child').simulate('click');
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({
+            [mockProps.id]: testValue,
+          });
+        });
+        break;
+      }
+      case 'checkboxes': {
+        it('contains label and input', () => {
+          const label = renderedSubcomponent.find('div label');
+          expect(label.length).toBe(2); //jak to 2 a nie 4?
+
+          const emptyInput = label.find('input[value=""]').length;
+          expect(emptyInput).toBe(0);
+
+          const input = label.find('input').not('input[value=""]');
+          expect(input.length).toBe(mockProps.values.length);
+          expect(input.at(0).prop('value')).toBe(mockProps.values[0].id);
+          expect(input.at(1).prop('value')).toBe(mockProps.values[1].id);
+        });
+        // it('should run setOrderOption function on change', () => {
+        //   renderedSubcomponent
+        //     .find(`input[value="${testValue}"]`)
+        //     .simulate('change', { currentTarget: { checked: true } });
+        //   expect(mockSetOrderOption).toBeCalledTimes(1);
+        //   expect(mockSetOrderOption).toBeCalledWith([
+        //     { [mockProps.id]: mockPropsForType.checkboxes.currentValue },
+        //   ]);
+        // });
+        break;
+      }
+      case 'text': {
+        /* tests for dropdown */
+        it('contains input', () => {
+          const input = renderedSubcomponent.find('input');
+          expect(input.length).toBe(1);
+
+          const emptyOption = input.find('[name=""]').length;
+          expect(emptyOption).toBe(0);
+
+          const options = input.find('option').not('[name=""]');
+          expect(options.length).toBe(mockProps.values.length);
+          expect(options.at(0).prop('value')).toBe(mockProps.values[0].id);
+          expect(options.at(1).prop('value')).toBe(mockProps.values[1].id);
+        });
+        it('should run setOrderOption function on change', () => {
+          renderedSubcomponent
+            .find('input')
             .simulate('change', { currentTarget: { value: testValue } });
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({
