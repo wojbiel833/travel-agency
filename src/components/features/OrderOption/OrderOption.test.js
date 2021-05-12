@@ -120,7 +120,7 @@ for (let type in optionTypes) {
       case 'icons': {
         it('contains div and Icon', () => {
           const div = renderedSubcomponent.find('div');
-          expect(div.length).toBe(4); //4 divy
+          expect(div.length).toBe(4);
 
           const noOption = div.find('Icon[name="times-circle"]').length;
           expect(noOption).toBe(1);
