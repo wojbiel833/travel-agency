@@ -1,3 +1,57 @@
 {
-  "orders": []
+  "orders": [
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "",
+      "contact": "",
+      "start-date": "",
+      "totalCost": "$51,381",
+      "id": 1
+    },
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "",
+      "contact": "",
+      "start-date": "",
+      "totalCost": "$51,381",
+      "id": 2
+    },
+    {
+      "car-rental": "luxury",
+      "accommodation": "house",
+      "features": [
+        "security",
+        "pool",
+        "kitchen",
+        "all-inclusive"
+      ],
+      "adults": "3",
+      "children": "1",
+      "name": "woj",
+      "contact": "000",
+      "start-date": "2021-05-17T22:00:00.000Z",
+      "totalCost": "$197,333",
+      "id": 3
+    },
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "",
+      "contact": "",
+      "start-date": "2021-05-31T22:00:00.000Z",
+      "totalCost": "$51,381",
+      "id": 4
+    }
+  ]
 }
