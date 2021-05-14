@@ -27,7 +27,10 @@ OrderOptionDate.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
-  currentValue: PropTypes.node,
+  currentValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date),
+  ]),
   setOptionValue: PropTypes.func,
 };
 

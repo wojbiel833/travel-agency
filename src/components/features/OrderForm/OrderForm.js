@@ -8,7 +8,14 @@ import OrderSummary from './../OrderSummary/OrderSummary';
 import pricing from './../../../data/pricing.json';
 import OrderOption from '../OrderOption/OrderOption';
 
-const OrderForm = ({ cost, options, setOrderOption }) => {
+const OrderForm = ({
+  cost,
+  options,
+  setOrderOption,
+  id,
+  name,
+  countryCode,
+}) => {
   return (
     <Grid>
       <Row>
@@ -27,7 +34,13 @@ const OrderForm = ({ cost, options, setOrderOption }) => {
               </Col>
             ))}
           </Row>
-          <OrderSummary options={options} tripCost={cost}></OrderSummary>
+          <OrderSummary
+            options={options}
+            tripCost={cost}
+            tripId={id}
+            tripName={name}
+            countryCode={countryCode}
+          ></OrderSummary>
         </Col>
       </Row>
     </Grid>
@@ -37,8 +50,11 @@ const OrderForm = ({ cost, options, setOrderOption }) => {
 OrderForm.propTypes = {
   cost: PropTypes.string,
   tripCost: PropTypes.string,
-  options: PropTypes.object || PropTypes.array,
+  options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   setOrderOption: PropTypes.func,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  countryCode: PropTypes.string,
 };
 
 export default OrderForm;

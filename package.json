@@ -44,6 +44,7 @@
     "react-dom": "^16.8.6",
     "react-flexbox-grid": "^2.1.2",
     "react-grid-system": "^7.1.2",
+    "react-hook-form": "^7.5.3",
     "react-html-parser": "^2.0.2",
     "react-native": "^0.64.1",
     "react-redux": "^7.0.1",

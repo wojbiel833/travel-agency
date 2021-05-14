@@ -9,10 +9,23 @@ import settings from './../../../data/settings';
 import { formatPrice } from './../../../utils/formatPrice';
 import { calculateTotal } from './../../../utils/calculateTotal';
 
-const sendOrder = (options, tripCost) => {
+const sendOrder = (
+  options,
+  tripCost,
+  tripId,
+  tripName,
+  countryCode,
+  name,
+  contact
+) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {
+    name,
+    contact,
+    countryCode,
+    tripId,
+    tripName,
     ...options,
     totalCost,
   };
@@ -37,11 +50,33 @@ const sendOrder = (options, tripCost) => {
     });
 };
 
-const OrderSummary = ({ tripCost, options }) => {
+const OrderSummary = ({
+  tripCost,
+  options,
+  tripId,
+  tripName,
+  countryCode,
+  name,
+  contact,
+}) => {
   return (
     <h2 className={styles.component}>
       <strong>{formatPrice(calculateTotal(tripCost, options))}</strong>
-      <Button onClick={() => sendOrder(options, tripCost)}>Order now!</Button>
+      <Button
+        onClick={() =>
+          sendOrder(
+            options,
+            tripCost,
+            tripId,
+            tripName,
+            countryCode,
+            name,
+            contact
+          )
+        }
+      >
+        Order now!
+      </Button>
     </h2>
   );
 };
@@ -49,6 +84,12 @@ const OrderSummary = ({ tripCost, options }) => {
 OrderSummary.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  id: PropTypes.string,
+  tripId: PropTypes.string,
+  tripName: PropTypes.string,
+  countryCode: PropTypes.string,
+  name: PropTypes.string,
+  contact: PropTypes.string,
 };
 
 export default OrderSummary;
