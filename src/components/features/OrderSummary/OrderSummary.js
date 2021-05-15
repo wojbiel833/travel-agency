@@ -18,6 +18,15 @@ const sendOrder = (
   name,
   contact
 ) => {
+  if (options.name.length < 1) {
+    alert('Field name is required');
+    return false;
+  }
+
+  if (options.contact.length < 1) {
+    alert('Field contact is required');
+    return false;
+  }
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {

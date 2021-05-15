@@ -9,6 +9,7 @@ class HappyHourAd extends React.Component {
 
     setInterval(() => this.forceUpdate(), 1000);
   }
+
   getCountdownTime() {
     const currentTime = new Date();
     const nextNoon = new Date(
@@ -31,12 +32,17 @@ class HappyHourAd extends React.Component {
   }
 
   render() {
-    // const description = this.props;
+    const validateHour = this.getCountdownTime();
+    const promotionText = '20% discount!';
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{this.props.description}</h3>
         <div className={styles.promoDescription}>
-          <div className="promoTime">{this.getCountdownTime()}</div>
+          <div className="promoTime">
+            {validateHour >= 12 && validateHour < 13
+              ? promotionText
+              : this.getCountdownTime()}
+          </div>
         </div>
       </div>
     );

@@ -25,17 +25,16 @@ describe('Component HappyHourAd', () => {
     expect(component.exists(select.title)).toEqual(true);
     expect(component.exists(select.descr)).toEqual(true);
   });
-  // it('should render correct description', () => {
-  //   const component = shallow(
-  //     <HappyHourAd description={mockProps.promoDescription} {...mockProps} />
-  //   );
+  it('should render correct description', () => {
+    const component = shallow(
+      <HappyHourAd description={mockProps.promoDescription} {...mockProps} />
+    );
 
-  //   expect(component.find(select.title).prop('title')).toEqual(
-  //     mockProps.promoDescription
-  //   );
-  // expect(input.at(0).prop('value')).toBe(mockProps.values[0].id);
+    expect(component.find(select.title).text()).toEqual(
+      mockProps.promoDescription
+    );
+  });
 });
-// });
 const trueDate = Date;
 const mockDate = customDate =>
   class extends Date {
@@ -95,14 +94,14 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
 });
 
-// describe('Component HappyHourAd with mocked Date', () => {
-//   checkDescriptionAtTime('11:57:58', '122');
-//   checkDescriptionAtTime('12:00:00', mockProps.promoDescription);
-//   checkDescriptionAtTime('12:59:59', mockProps.promoDescription);
-//   checkDescriptionAtTime('13:00:00', 23 * 60 * 60 + '');
-// });
+describe('Component HappyHourAd with mocked Date', () => {
+  checkDescriptionAtTime('11:57:58', '122');
+  checkDescriptionAtTime('12:00:00', mockProps.promoDescription);
+  checkDescriptionAtTime('12:59:59', mockProps.promoDescription);
+  checkDescriptionAtTime('13:00:00', 23 * 60 * 60 + '');
+});
 
-// describe('Component HappyHourAd with mocked Date and delay', () => {
-//   checkDescriptionAfterTime('12:00:00', 2, mockProps.promoDescription);
-//   checkDescriptionAfterTime('12:59:59', 1, mockProps.promoDescription);
-// });
+describe('Component HappyHourAd with mocked Date and delay', () => {
+  checkDescriptionAfterTime('12:00:00', 2, mockProps.promoDescription);
+  checkDescriptionAfterTime('12:59:59', 1, mockProps.promoDescription);
+});
