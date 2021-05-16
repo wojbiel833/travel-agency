@@ -11,35 +11,9 @@ const select = {
 
 const mockProps = {
   title: 'Lorem ipsum',
-  promoDescription: '20% discount!',
+  promoDescription: 'Lorem ipsum dolor',
 };
 
-beforeAll(() => {
-  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
-  utilsModule.formatTime = jest.fn(seconds => seconds);
-});
-
-describe('Component HappyHourAd', () => {
-  it('should render without crashing', () => {
-    const component = shallow(<HappyHourAd />);
-    expect(component).toBeTruthy();
-    console.log(component.debug());
-  });
-  it('should render heading and description', () => {
-    const component = shallow(<HappyHourAd />);
-    expect(component.exists(select.title)).toEqual(true);
-    expect(component.exists(select.descr)).toEqual(true);
-  });
-  it('should render correct description', () => {
-    const component = shallow(
-      <HappyHourAd description={mockProps.promoDescription} {...mockProps} />
-    );
-
-    expect(component.find(select.title).text()).toEqual(
-      mockProps.promoDescription
-    );
-  });
-});
 const trueDate = Date;
 const mockDate = customDate =>
   class extends Date {
@@ -108,5 +82,5 @@ describe('Component HappyHourAd with mocked Date', () => {
 
 describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('12:00:00', 2, mockProps.promoDescription);
-  checkDescriptionAfterTime('12:59:59', 1, '82800');
+  checkDescriptionAfterTime('12:59:59', 1, mockProps.promoDescription);
 });

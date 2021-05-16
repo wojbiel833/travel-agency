@@ -40,9 +40,9 @@ class HappyHourAd extends React.Component {
         <h3 className={styles.title}>{this.props.description}</h3>
         <div className={styles.promoDescription}>
           <div className="promoTime">
-            {validateTime <= 23 && validateTime > 24
-              ? promotionText
-              : this.getCountdownTime()}
+            {validateTime <= 82800 && validateTime >= 1
+              ? this.getCountdownTime()
+              : promotionText}
           </div>
         </div>
       </div>
