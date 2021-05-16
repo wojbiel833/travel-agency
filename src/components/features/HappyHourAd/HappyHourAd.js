@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './HappyHourAd.scss';
+// import { formatTime } from './../../../utils/FormatTime';
 
 class HappyHourAd extends React.Component {
   constructor() {
@@ -32,14 +33,14 @@ class HappyHourAd extends React.Component {
   }
 
   render() {
-    const validateHour = this.getCountdownTime();
+    const validateTime = this.getCountdownTime();
     const promotionText = '20% discount!';
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{this.props.description}</h3>
         <div className={styles.promoDescription}>
           <div className="promoTime">
-            {validateHour >= 12 && validateHour < 13
+            {validateTime <= 23 && validateTime > 24
               ? promotionText
               : this.getCountdownTime()}
           </div>
