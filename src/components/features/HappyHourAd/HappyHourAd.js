@@ -29,21 +29,16 @@ class HappyHourAd extends React.Component {
       nextNoon.setUTCDate(currentTime.getUTCDate() + 1);
     }
 
-    return Math.round((nextNoon.getTime() - currentTime.getTime()) / 1000);
+    if (currentTime.getUTCHours() === 12) return '20% discount!';
+    else return Math.round((nextNoon.getTime() - currentTime.getTime()) / 1000);
   }
 
   render() {
-    const validateTime = this.getCountdownTime();
-    const promotionText = '20% discount!';
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{this.props.description}</h3>
         <div className={styles.promoDescription}>
-          <div className="promoTime">
-            {validateTime <= 82800 && validateTime >= 1
-              ? this.getCountdownTime()
-              : promotionText}
-          </div>
+          <div className="promoTime">{this.getCountdownTime()}</div>
         </div>
       </div>
     );
