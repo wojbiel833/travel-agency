@@ -14,11 +14,6 @@ const mockProps = {
   promoDescription: '20% discount!',
 };
 
-beforeAll(() => {
-  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
-  utilsModule.formatTime = jest.fn(seconds => seconds);
-});
-
 describe('Component HappyHourAd', () => {
   it('should render without crashing', () => {
     const component = shallow(<HappyHourAd />);
