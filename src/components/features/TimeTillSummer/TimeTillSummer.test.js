@@ -75,10 +75,10 @@ const checkDescriptionAtDay = (date, expectedDescription) => {
 };
 
 describe('Component TimeTillSummer with mocked Date', () => {
-  // checkDescriptionAtDay('18-05-2021', '34');
-  // checkDescriptionAtDay('01-02-2021', '140');
-  // checkDescriptionAtDay('20-06-2021', '1');
-  // checkDescriptionAtDay('20-07-2021', null);
-  // checkDescriptionAtDay('22-09-2021', null);
-  checkDescriptionAtDay('24-09-2021', '218');
+  checkDescriptionAtDay('18-05-2021', '34 DAYS');
+  checkDescriptionAtDay('01-02-2021', '140 DAYS');
+  checkDescriptionAtDay('20-06-2021', '1 DAY');
+  checkDescriptionAtDay('20-07-2021', null);
+  checkDescriptionAtDay('22-09-2021', null);
+  checkDescriptionAtDay('24-09-2021', '218 DAYS');
 });
