@@ -4,40 +4,13 @@ import { shallow } from 'enzyme';
 import TimeTillSummer from './TimeTillSummer';
 
 const select = {
-  summerTime: '.summerTime',
-  fatLetters: '.fatLetters',
-};
-
-const mockProps = {
-  summerTimeDescr: 'Lorem ipsum',
-  daysNumber: '100',
+  title: '.title',
 };
 
 describe('Component TimeTillSummer', () => {
   it('should render without crashing', () => {
     const component = shallow(<TimeTillSummer />);
     expect(component).toBeTruthy();
-    console.log(component.debug());
-  });
-  it('should render heading', () => {
-    const component = shallow(<TimeTillSummer />);
-    expect(component.exists('.summerTime')).toEqual(true);
-  });
-  it('should render correct description', () => {
-    const component = shallow(
-      <TimeTillSummer description={mockProps.summerTimeDescr} />
-    );
-
-    expect(component.find(select.summerTime).text()).toEqual(
-      mockProps.summerTimeDescr
-    );
-  });
-  it('should render days count', () => {
-    const component = shallow(
-      <TimeTillSummer description={mockProps.summerTimeDescr} />
-    );
-
-    expect(component.exists('.fatLetters')).toEqual(true);
   });
 });
 
@@ -57,28 +30,30 @@ const mockDate = customDate =>
     }
   };
 
-const checkDescriptionAtDay = (date, expectedDescription) => {
-  it(`should show correct days count in ${date}T00:00:00.135Z`, () => {
-    global.Date = mockDate(`${date}T00:00:00.135Z`);
+const checkDescriptionAtDate = (day, expectedDescription) => {
+  it(`should show correct ${day}`, () => {
+    global.Date = mockDate(`${day}T00:00:00.000Z`);
 
-    const component = shallow(<TimeTillSummer {...mockProps} />);
+    const component = shallow(<TimeTillSummer />);
+    console.log(component.debug());
+
     if (expectedDescription) {
-      const renderedTime = component.find(select.fatLetters).text();
-      expect(renderedTime).toEqual(expectedDescription);
+      const renderedDescription = component.find(select.title).text();
+      expect(renderedDescription).toEqual(expectedDescription);
     } else {
-      const renderedTime = component.find(select.fatLetters);
-      expect(renderedTime).toEqual({});
+      expect(component.text()).toBe('');
     }
 
     global.Date = trueDate;
   });
 };
 
-describe('Component TimeTillSummer with mocked Date', () => {
-  checkDescriptionAtDay('18-05-2021', '34 DAYS');
-  checkDescriptionAtDay('01-02-2021', '140 DAYS');
-  checkDescriptionAtDay('20-06-2021', '1 DAY');
-  checkDescriptionAtDay('20-07-2021', null);
-  checkDescriptionAtDay('22-09-2021', null);
-  checkDescriptionAtDay('24-09-2021', '218 DAYS');
+describe('Component DaysToSummer with mocked Date', () => {
+  checkDescriptionAtDate('2021-06-20', 'DAY');
+  checkDescriptionAtDate('2021-06-19', '2 DAYS');
+  checkDescriptionAtDate('2021-03-01', '112 DAYS');
+
+  checkDescriptionAtDate('2021-06-21', null);
+  checkDescriptionAtDate('2021-07-03', null);
+  checkDescriptionAtDate('2021-09-23', null);
 });
