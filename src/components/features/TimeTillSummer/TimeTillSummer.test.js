@@ -58,22 +58,27 @@ const mockDate = customDate =>
   };
 
 const checkDescriptionAtDay = (date, expectedDescription) => {
-  it(`should show correct days count in ${date}`, () => {
-    global.Date = mockDate(`${date}`);
+  it(`should show correct days count in ${date}T00:00:00.135Z`, () => {
+    global.Date = mockDate(`${date}T00:00:00.135Z`);
 
     const component = shallow(<TimeTillSummer {...mockProps} />);
-    const renderedTime = component.find(select.fatLetters).text();
-    expect(renderedTime).toEqual(expectedDescription);
+    if (expectedDescription) {
+      const renderedTime = component.find(select.fatLetters).text();
+      expect(renderedTime).toEqual(expectedDescription);
+    } else {
+      const renderedTime = component.find(select.fatLetters);
+      expect(renderedTime).toEqual({});
+    }
 
     global.Date = trueDate;
   });
 };
 
 describe('Component TimeTillSummer with mocked Date', () => {
-  checkDescriptionAtDay('17-05-2021', '34');
+  // checkDescriptionAtDay('18-05-2021', '34');
   // checkDescriptionAtDay('01-02-2021', '140');
   // checkDescriptionAtDay('20-06-2021', '1');
-  // checkDescriptionAtDay('20-07-2021', '');
-  // checkDescriptionAtDay('22-09-2021', '');
-  // checkDescriptionAtDay('24-09-2021', '218');
+  // checkDescriptionAtDay('20-07-2021', null);
+  // checkDescriptionAtDay('22-09-2021', null);
+  checkDescriptionAtDay('24-09-2021', '218');
 });
